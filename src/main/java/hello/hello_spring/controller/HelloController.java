@@ -11,37 +11,17 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class HelloController {
 
     static class Hello {
-      private Data data;
-
-      public Data getData() {
-        return this.data;
-      }
-
-      public void setData(Data data) {
-        this.data = data;
-      }
-    }
-
-    static class Data {
       private String name;
-      private int age;
 
       public String getName() {
         return this.name;
       }
 
-      public int getAge() {
-        return this.age;
-      }
-
       public void setName(String name) {
         this.name = name;
       }
-
-      public void setAge(int age) {
-        this.age = age;
-      }
     }
+
 
     @GetMapping("hello")
     public String hello(Model model) {
@@ -63,13 +43,9 @@ public class HelloController {
 
     @GetMapping("hello-api")
     @ResponseBody
-    public Hello helloApi(@RequestParam("name") String name, @RequestParam("age") int age) {
+    public Hello helloApi(@RequestParam("name") String name) {
       Hello hello = new Hello();
-      Data data = new Data();
-      data.setName(name);
-      data.setAge(age);
-
-      hello.setData(data);
+      hello.setName(name);
       return hello;
     }
 }
