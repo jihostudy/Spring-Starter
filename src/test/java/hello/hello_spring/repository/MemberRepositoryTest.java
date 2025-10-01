@@ -3,7 +3,7 @@ package hello.hello_spring.repository;
 import java.util.List;
 
 import org.assertj.core.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
 // import org.junit.jupiter.a÷pi.Assertions;
 import org.junit.jupiter.api.Test;
@@ -13,7 +13,7 @@ import hello.hello_spring.domain.Member;
 class MemberRepositoryTest {
   MemoryMemberRepository repository = new MemoryMemberRepository();
 
-  @BeforeEach
+  @AfterEach
   public void beforeEach() {
     repository.clearStore(); // 각 테스트 실행 전에 메모리 초기화
   }
