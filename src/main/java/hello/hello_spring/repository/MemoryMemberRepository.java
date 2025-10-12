@@ -41,7 +41,7 @@ public class MemoryMemberRepository implements MemberRepository {
   }
 
   // 전체 삭제
-  @Override
+  // @Override
   public void clearStore() {
     store.clear();
   }

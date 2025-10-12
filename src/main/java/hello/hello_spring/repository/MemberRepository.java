@@ -10,5 +10,4 @@ public interface MemberRepository {
   Optional<Member> findById(Long id); // 조회
   Optional<Member> findByName(String name); // 조회
   List<Member> findAll(); // 모두 조회
-  void clearStore(); // 전체 삭제
 }
