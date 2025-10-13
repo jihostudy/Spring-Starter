@@ -5,8 +5,11 @@ import java.util.Optional;
 
 import hello.hello_spring.domain.Member;
 import hello.hello_spring.repository.MemberRepository;
+import jakarta.transaction.Transactional;
 
+@Transactional
 public class MemberService {
+
   private final MemberRepository memberRepository;
 
   // 의존성 주입 (DI)
