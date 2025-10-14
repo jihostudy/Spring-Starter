@@ -1,17 +1,10 @@
 package hello.hello_spring;
 
+import hello.hello_spring.aop.TimeTraceAop;
 import hello.hello_spring.repository.*;
 import hello.hello_spring.service.MemberService;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
-import org.springframework.jdbc.core.JdbcTemplate;
-
-
-import javax.sql.DataSource;
 
 @Configuration
 public class SpringConfig {
@@ -25,10 +18,15 @@ public class SpringConfig {
     }
 
     @Bean
-  public MemberService memberService() {
+    public MemberService memberService() {
     return new MemberService(memberRepository);
   }
 
+// NOTE: AOP는 따로 Config에 등록해두어서 확인가능하게 하는 것이 더 좋다고 함
+  //    @Bean
+//    public TimeTraceAop timeTraceAop() {
+//        return new TimeTraceAop();
+//    }
 
     //  private final DataSource dataSource;
     //  private final EntityManager em;
