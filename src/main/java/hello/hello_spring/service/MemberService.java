@@ -24,10 +24,20 @@ public class MemberService {
    * @return
    */
   public Long join(Member member) {
-    // 중복 회원 검사
-    validateDuplicateMember(member);
-    memberRepository.save(member);
-    return member.getId();
+    long start = System.currentTimeMillis();
+    try {
+        // 중복 회원 검사
+        validateDuplicateMember(member);
+        memberRepository.save(member);
+        return member.getId();
+    }
+    finally {
+        long finish = System.currentTimeMillis();
+        long timeMillis = finish - start;
+        System.out.printf("join time: %d ms\n", timeMillis);
+    }
+
+
   }
 
   /**
@@ -36,7 +46,15 @@ public class MemberService {
    * @param member
    */
   public List<Member> findMembers() {
-    return memberRepository.findAll();
+      long start = System.currentTimeMillis();
+      try{
+          return memberRepository.findAll();
+      }finally {
+          long finish = System.currentTimeMillis();
+          long timeMillis = finish - start;
+          System.out.printf("join time: %d ms\n", timeMillis);
+      }
+
   }
 
   /**
